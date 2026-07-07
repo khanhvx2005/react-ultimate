@@ -10,8 +10,7 @@ import TodoData from './component/learn/TodoData'
 import logoReact from './assets/react.svg'
 function App() {
   const [todoList, setTodoList] = useState([
-    { id: 1, name: "Learn React" },
-    { id: 2, name: "Machine Learning" }
+
   ])
   const name = "vuxuankhanh";
   const addNewTodo = (name) => {
@@ -20,6 +19,11 @@ function App() {
       name: name
     }
     setTodoList([...todoList, newTodo])
+  }
+  const deleteTodo = (id) => {
+    const todoListNew = todoList.filter((item) => item.id !== id);
+    setTodoList(todoListNew)
+
   }
   function randomIntFromInterval(min, max) { // min and max included  
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -30,14 +34,19 @@ function App() {
       <TodoForm
         addNewTodo={addNewTodo}
       />
-      <TodoData
+      {todoList.length > 0 ?
+        (<TodoData
+          todoList={todoList}
+          deleteTodo={deleteTodo}
+        />)
+        :
+        (<div>
+          <img src={logoReact} alt="" />
+        </div>)
+      }
 
-        todoList={todoList}
-      />
-      <div>
-        <img src={logoReact} alt="" />
-      </div>
-    </div>
+
+    </div >
 
   )
 }
