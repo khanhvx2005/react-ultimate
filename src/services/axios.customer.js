@@ -8,6 +8,8 @@ const instance = axios.create({
 // instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 instance.interceptors.request.use(
   function (config) {
+    config.headers.Authorization =
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInBob25lIjoiMTIzNDU2Nzg5IiwiZnVsbE5hbWUiOiJJJ20gQWRtaW4iLCJyb2xlIjoiQURNSU4iLCJzdWIiOiI2YTRmODg2NmU4ZmQ0NDc1ZjYzMmM1MTkiLCJhdmF0YXIiOiIyMTIzMmYyOTdhNTdhNWE3NDM4OTRhMGU0YTgwMWZjMy5wbmciLCJpYXQiOjE3ODQzNTAyMDQsImV4cCI6MTc4NDM4NjIwNH0.2-F2xrAAQHU1PAtOugbtroN-wXwfjkOPGH7oCvIPV4Q";
     // Do something before the request is sent
     return config;
   },
